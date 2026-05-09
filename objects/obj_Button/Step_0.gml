@@ -29,6 +29,7 @@ if(hover)
 	if (mouse_check_button_pressed(mb_left))
 	{
 		alarm[1] = 1;
+		audio_play_sound(snd_Land, 10, false)
 		clicked = true;
 		storedImageAngle = image_angle;
 	}
