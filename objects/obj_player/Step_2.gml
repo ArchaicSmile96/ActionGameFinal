@@ -28,10 +28,17 @@ for(var dist_moved = 0; dist_moved < abs(yVel) + 5; dist_moved++){
 		{
 			if (yVel > 0)
 			{
-				audio_play_sound(snd_Land, 10, false)
+				if (yVel >= 7.5)
+				{
+					alarm[1] = 1;
+				}
+
+				afterImageEffect = false;
+				visual.Land();
 				state = PlayerState.Grounded;
 				jumpedTwice = false;
 				squishTimer = 0;
+				part_particles_create(particleSystem, x, new_y, 0, 1)
 			}
 			else if (yVel < 0)
 			{
@@ -40,15 +47,22 @@ for(var dist_moved = 0; dist_moved < abs(yVel) + 5; dist_moved++){
 			}
 			yVel = 0;
 			y = new_y
+
 		}
 		else
 		{
 			if (yVel <= 0)
 			{
-				audio_play_sound(snd_Land, 10, false)
+				if (yVel <= -7.5)
+				{
+					alarm[1] = 1;
+				}
+				afterImageEffect = false;
 				state = PlayerState.Grounded;
+				visual.Land();
 				jumpedTwice = false;
 				squishTimer = 0;
+				part_particles_create(particleSystem, x, new_y - sprite_height + 6, 1, 1)
 			}
 			else if (yVel > 0)
 			{

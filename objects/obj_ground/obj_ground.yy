@@ -1,13 +1,17 @@
 {
   "$GMObject":"",
   "%Name":"obj_ground",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"obj_ground",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Ground",
+    "path":"folders/Objects/Ground.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -21,16 +25,21 @@
   "physicsRestitution":0.1,
   "physicsSensor":false,
   "physicsShape":1,
-  "physicsShapePoints":[],
+  "physicsShapePoints":[
+    {"x":0.0,"y":0.0,},
+    {"x":32.0,"y":0.0,},
+    {"x":32.0,"y":16.0,},
+    {"x":0.0,"y":16.0,},
+  ],
   "physicsStartAwake":true,
-  "properties":[],
+  "properties":[
+    {"$GMObjectProperty":"v2","%Name":"spiked","filters":[],"listItems":[],"multiselect":false,"name":"spiked","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
+    {"$GMObjectProperty":"v2","%Name":"sprite1","filters":[],"listItems":[],"multiselect":false,"name":"sprite1","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"spr_grass1","path":"sprites/spr_grass1/spr_grass1.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"spr_grass1","varType":5,},
+  ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_metalPlatform",
-    "path":"sprites/spr_metalPlatform/spr_metalPlatform.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

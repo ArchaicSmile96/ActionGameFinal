@@ -30,9 +30,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_earth",
-    "path":"sprites/spr_earth/spr_earth.yy",
+    "name":"spr_moonPart",
+    "path":"sprites/spr_moonPart/spr_moonPart.yy",
   },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }

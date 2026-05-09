@@ -1,14 +1,13 @@
-var camX = camera_get_view_x(view_camera[0]);
-var camY = camera_get_view_y(view_camera[0]);
+
 var camAng = camera_get_view_angle(view_camera[0])
 
-camera_set_view_angle(view_camera[0], camAng + irandom_range(1, shakeAmount))
+camera_set_view_angle(view_camera[0], camAng + irandom_range(1, tiltAmount))
 
-shakeAmount--;
+tiltAmount--;
 
-if(shakeAmount <= 0)
+if(tiltAmount <= 0)
 {
-	shakeAmount = 5;	
+	tiltAmount = 5;	
 }
 else
 {

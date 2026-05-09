@@ -28,6 +28,16 @@ rightKey = ord("D");
 upsideDown = false;
 pressedSpace = false;
 shakeAmount = 5;
+tiltAmount = 5;
+afterImageInterval = 0
+afterImageEffect = false;
+particleSystem = part_system_create(prt_Land)
+
+afterImageMap = ds_map_create()
+ds_map_add(afterImageMap, spr_playerIdle, spr_aftImgIdle)
+ds_map_add(afterImageMap, spr_playerWalk, spr_aftImgWalk)
+ds_map_add(afterImageMap, spr_playerJump, spr_aftImgJump)
+
 function Hurt()
 {
 	HP--;
@@ -66,12 +76,12 @@ function OrientandWalk()
 	{
 		if (keyboard_check(leftKey))
 		{
-			visual.image_xscale = -1;
+			visual.SetXScaleSign(-1);
 			xVel = -1;
 		}
 		if (keyboard_check(rightKey))
 		{
-			visual.image_xscale = 1;
+			visual.SetXScaleSign(1);
 			xVel = 1;
 		}
 	}
@@ -79,12 +89,12 @@ function OrientandWalk()
 	{
 		if (keyboard_check(leftKey))
 		{
-			visual.image_xscale = 1;
+			visual.SetXScaleSign(1);
 			xVel = -1;
 		}
 		if (keyboard_check(rightKey))
 		{
-			visual.image_xscale = -1;
+			visual.SetXScaleSign(-1);
 			xVel = 1;
 		}
 	}
@@ -200,33 +210,42 @@ function AnimateJump()
 
 function CapVelocity()
 {
-	if (xVel > 5)
+	if (abs(xVel) > 5)
 	{
-		xVel = 5;
+		xVel = 5 * sign(xVel);
 	}
-	if (yVel > 10)
+	if (abs(yVel) > 10)
 	{
-		yVel = 10;
+		yVel = 10 * sign(yVel);
 	}
-	if (yVel < -10)
+	if (abs(yVel) > 7.5)
 	{
-		yVel = -10;
+		afterImageEffect = true;
 	}
+}
+
+function Die()
+{
+	if (upsideDown)
+	{
+		Flip()
+		yVel = 0;
+	}
+	audio_play_sound(snd_Die, 10, false)
+	visual.rotate = false;
+	afterImageEffect = false;
+	
+	visual.image_angle = 0;
+	visual.fullyUpsideDown = false;
+	x = 48
+	y = 608 - 48
 }
 
 function CheckFell()
 {
-	if (y > room_height || y < 0)
+	if (y > room_height || y < -50)
 	{
-		if (upsideDown)
-		{
-			Flip()
-			yVel = 0;
-		}
-		audio_play_sound(snd_Die, 10, false)
-		visual.rotate = false;
-		visual.image_angle = 0;
-		x = 48
-		y = 608
+		Die();
 	}
 }
+
